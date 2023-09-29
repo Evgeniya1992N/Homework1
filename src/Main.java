@@ -10,6 +10,5 @@ public class Main {
     }
 
     //Не работает вывод на экран: System.out.println(lada);
-//
 }
 

@@ -15,7 +15,7 @@ public class Main {
         System.out.println(lada.changeTires(1));
 
     }
-//new branch
+
 
 }
 

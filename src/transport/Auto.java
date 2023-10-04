@@ -126,8 +126,8 @@ public class Auto {
 
 
     public class Key {
-        protected final boolean remoteEngineStart;
-        protected final boolean keylessAccess;
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
 
         public Key(boolean remoteEngineStart, boolean keylessAccess) {
             this.remoteEngineStart = remoteEngineStart;

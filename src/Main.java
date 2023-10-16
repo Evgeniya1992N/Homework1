@@ -1,62 +1,41 @@
-import transport.Auto;
-import transport.Bus;
+import transport.*;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        //Auto lada = new Auto( "Lada","Granta", 1.7,"yellow" , 2015, "Russia", "5", "limo", 123455, 4, true);
-        // Auto audi = new Auto( "Audi","A8", 3.0,"black" , 2020, "Germany");
-       //  Auto bmw = new Auto( "BMW","Z8", 3.0,"black" , 2021, "Germany");
-      //   Auto kia = new Auto( "Kia","Sportage", 2.4,"red" , 2018, "South Korea");
-     //    Auto hyundai = new Auto( "Hyundai","Avante", 1.6,"orange" , 2016, "South Korea");
 
-       // System.out.println(lada);
-        Auto lada = new Auto("Lada",
-                             "Granta",
-                1.7,
-                "yellow" ,
-                2015,
-                "Russia",
-                "5",
-                "limo",
-                "123455",
-                4,
-                false,
-                new Auto.Key(true, true),
-                250);
+   for(int i = 1; i<=4; i++){
+       DriverB driverB = new DriverB("Driver cat.B N" + i, true, 5+i);
+       Auto auto = new Auto(
+               "Auto brand N" + i,
+               "Auto model N" + i,
+               1.6,
+               driverB);
+       DriverD driverD = new DriverD("Driver cat.D N" + i, true, 7+i);
+       Bus bus = new Bus(
+               "Bus brand N" + i,
+               "Bus model N" + i,
+               i+0.5,
+               driverD);
+       DriverC driverC = new DriverC("Driver cat.C N" + i, true, 10+i);
+       Truck truck = new Truck(
+               "Truck brand N" + i,
+               "Truck model N" + i,
+               i+1,
+               driverC);
 
-        Auto kia = new Auto("KIA",
-                "Sportage",
-                2.4,
-                null ,
-                2009,
-                "Korrea",
-                "5",
-                "kupe",
-                "dw7jo",
-                2,
-                true,
-                new Auto.Key(false, false),
-                300);
 
-        Bus miniVan = new Bus("Mercedec", "mini", "black", 2015, "USA", 240);
-        Bus familyBus = new Bus("WV", "classic", "blue", 2021, "Swede", 260);
-        Bus doubleDeck = new Bus("Volvo", "original", "red", 2023, "UK", 270);
-
-        System.out.println(lada);
-        lada.changeTires(4);
-        System.out.println(lada);
-        System.out.println(kia);
-
-        System.out.println(miniVan);
-        System.out.println(familyBus);
-        System.out.println(doubleDeck);
+       printInfo(auto);
+       printInfo(bus);
+       printInfo(truck);
 
 
 
+   }
     }
-
-
+    private static void printInfo(Transport<?> transport){
+        System.out.println("водитель" + transport.getDriver().getName() +" А управляет автомобилем "+transport.getBrand()+ " и будет участвовать в заезде");
+    }
 }
 
 //

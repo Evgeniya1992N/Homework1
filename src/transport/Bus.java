@@ -1,17 +1,42 @@
 package transport;
 
-public class Bus extends Transport{
-    public Bus(String brand, String model, String color, int year, String country, int maxSpeed) {
-        super(brand, model, color, year, country, maxSpeed);
-    }
-    @Override
-    public String toString() {
-        return "Bus: " + super.getBrand() +
-                " model - " + super.getModel() +
-                ",color - " + super.getColor() +
-                ", country - " + super.getCountry() +
-                ", speed - " + super.getMaxSpeed();
+public class Bus extends Transport<DriverD>{
 
+    public Bus(String brand,
+               String model,
+               double engineVolume,
+               DriverD driver) {
+        super(brand, model, engineVolume, driver);
+    }
+
+    @Override
+    public void startMoving(){
+        System.out.println("Bus of brand" + getBrand() + "started to move");
+    }
+
+    public void stopMoving(){
+        System.out.println("Bus of brand" + getBrand() + "stopped to move");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Pit stop by bus");
+    }
+
+    @Override
+    public void bestRoundTime() {
+        int minBound =80;
+        int maxBound = 120;
+        int bestTimeInMins = (int) (minBound + (maxBound-minBound) * Math.random());
+        System.out.println("The best time by bus" + bestTimeInMins);
+    }
+
+    @Override
+    public void maxSpeed() {
+        int minBound =80;
+        int maxBound = 120;
+        int maxSpeed = (int) (minBound + (maxBound-minBound) * Math.random());
+        System.out.println("Max speed by bus" + maxSpeed);
 
     }
 }

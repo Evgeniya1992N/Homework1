@@ -1,19 +1,16 @@
 package transport;
 
-public class Transport {
+public abstract class Transport<T extends Driver> implements Compating{
     private final String brand;
     private final String model;
-    private String color;
-    private final int year;
-    private final String country;
-    private int maxSpeed;
+    private double engineVolume;
+    private T driver;
+
 
     public Transport(String brand,
                      String model,
-                     String color,
-                     int year,
-                     String country,
-                     int maxSpeed) {
+                     double engineVolume,
+                     T driver) {
 
         if (brand == null || brand.isEmpty()){
             brand = "default";
@@ -24,35 +21,9 @@ public class Transport {
             model = "default";
         }
         this.model = model;
-        if (country == null || country.isEmpty()){
-            country = "default";
-        }
-        this.country = country;
-        setColor(color);
-        if(year <= 0){
-            year = 2000;
-        }
-        this.year =year;
-        if(maxSpeed == 0){
-            maxSpeed = 200;
-        }
-        setMaxSpeed(maxSpeed);
+        setEngineVolume(engineVolume);
+        setDriver(driver);
     }
-
-    private void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed == 0){
-            maxSpeed = 200;
-        }
-        this.maxSpeed = maxSpeed;
-    }
-
-    private void setColor(String color) {
-        if (color == null){
-            color = "white";
-        }
-        this.color = color;
-    }
-
 
     public String getBrand() {
         return brand;
@@ -62,20 +33,33 @@ public class Transport {
         return model;
     }
 
-    public String getColor() {
-        return color;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public int getYear() {
-        return year;
+    public void setEngineVolume(double engineVolume) {
+        if (engineVolume <= 0) {
+            engineVolume = 1.6;
+        }
+        this.engineVolume = engineVolume;
+    }
+    public T getDriver() {
+        return driver;
     }
 
-    public String getCountry() {
-        return country;
+    public void setDriver(T driver){
+        this.driver = driver;
+    }
+    public void startMoving(){
+    }
+    public  void stopMoving(){
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    @Override
+    public String toString() {
+        return "Transport: " + brand +
+                " model - " + model +
+                ", engine volume - " + engineVolume;
     }
 }
 
